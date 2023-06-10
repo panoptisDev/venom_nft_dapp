@@ -2,13 +2,19 @@ pragma ever-solidity >= 0.61.2;
 pragma AbiHeader expire;
 pragma AbiHeader pubkey;
 
-import "./Collection.sol";
-contract Sample is Collection {
+import "./NFTCollection.sol";
+
+contract NFTContract is NFTCollection {
     uint static nounce;
-    uint static owner;
+    address static owner;
     uint state;
 
     event StateChange(uint _state);
+
+    event tokenCreated(
+        string tokenURI,
+        uint256 tokenId
+    );
 
     constructor(
         uint _state,
@@ -16,14 +22,18 @@ contract Sample is Collection {
         TvmCell codeIndex,
         TvmCell codeIndexBasis,
         string json
-        ) Collection(codeNft, codeIndex, codeIndexBasis, json) public {
+        ) NFTCollection(codeNft, codeIndex, codeIndexBasis, json) public {
         tvm.accept();
 
         setState(_state);
     }
 
-    function mintNft() public {
-        _mintNft(_json);
+    function mintNft(string json) public {
+        _mintNft(json);
+        emit tokenCreated(
+            json,
+            _totalSupply
+        );
     }
 
     function setState(uint _state) public {

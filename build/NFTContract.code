@@ -104,13 +104,13 @@ CALLREF {
 }
 .loc ../contracts/NFTCollection.sol, 39
 ACCEPT
-.loc ../contracts/Sample.sol, 26
+.loc ../contracts/NFTContract.sol, 26
 ACCEPT
-.loc ../contracts/Sample.sol, 28
+.loc ../contracts/NFTContract.sol, 28
 CALLREF {
 	CALL $setState_a9e966b7_internal_macro$
 }
-.loc ../contracts/Sample.sol, 0
+.loc ../contracts/NFTContract.sol, 0
 CALLREF {
 	CALL $c7_to_c4$
 }
@@ -125,10 +125,10 @@ ISNULL
 IFREF {
 	CALL $c4_to_c7$
 }
-.loc ../contracts/Sample.sol, 31
+.loc ../contracts/NFTContract.sol, 31
 LDREF
 ENDS
-.loc ../contracts/Sample.sol, 0
+.loc ../contracts/NFTContract.sol, 0
 CALLREF {
 	CALL $mintNft_da86f4a9_internal_macro$
 }
@@ -143,12 +143,12 @@ THROW 0
 CALL $mintNft_da86f4a9_internal_macro$
 
 .macro mintNft_da86f4a9_internal_macro
-.loc ../contracts/Sample.sol, 32
+.loc ../contracts/NFTContract.sol, 32
 DUP
 CALLREF {
 	CALL $_mintNft_4d0b706c_internal_macro$
 }
-.loc ../contracts/Sample.sol, 33
+.loc ../contracts/NFTContract.sol, 33
 GETGLOB 12
 SWAP
 PUSHSLICE xc000000000000000000000000059d304c4
@@ -159,7 +159,7 @@ STU 256
 ENDC
 PUSHINT 0
 SENDRAWMSG
-.loc ../contracts/Sample.sol, 0
+.loc ../contracts/NFTContract.sol, 0
 
 .macro setState
 DROP
@@ -170,7 +170,7 @@ ISNULL
 IFREF {
 	CALL $c4_to_c7$
 }
-.loc ../contracts/Sample.sol, 39
+.loc ../contracts/NFTContract.sol, 39
 OVER
 PUSHCONT {
 	LDREF
@@ -180,7 +180,7 @@ PUSHCONT {
 IF
 LDU 256
 ENDS
-.loc ../contracts/Sample.sol, 0
+.loc ../contracts/NFTContract.sol, 0
 CALLREF {
 	CALL $setState_a9e966b7_internal_macro$
 }
@@ -195,12 +195,12 @@ THROW 0
 CALL $setState_a9e966b7_internal_macro$
 
 .macro setState_a9e966b7_internal_macro
-.loc ../contracts/Sample.sol, 40
+.loc ../contracts/NFTContract.sol, 40
 ACCEPT
-.loc ../contracts/Sample.sol, 41
+.loc ../contracts/NFTContract.sol, 41
 DUP
 SETGLOB 22
-.loc ../contracts/Sample.sol, 43
+.loc ../contracts/NFTContract.sol, 43
 PUSHSLICE xc0000000000000000000000000633b31a8
 NEWC
 STSLICE
@@ -208,7 +208,7 @@ STU 256
 ENDC
 PUSHINT 0
 SENDRAWMSG
-.loc ../contracts/Sample.sol, 0
+.loc ../contracts/NFTContract.sol, 0
 
 .macro getDetails
 DROP
@@ -219,9 +219,9 @@ ISNULL
 IFREF {
 	CALL $c4_to_c7$
 }
-.loc ../contracts/Sample.sol, 46
+.loc ../contracts/NFTContract.sol, 46
 ENDS
-.loc ../contracts/Sample.sol, 0
+.loc ../contracts/NFTContract.sol, 0
 CALLREF {
 	CALL $getDetails_fbbf93a0_internal_macro$
 }
@@ -253,9 +253,9 @@ IFREF {
 THROW 0
 
 .macro getDetails_fbbf93a0_internal_macro
-.loc ../contracts/Sample.sol, 52
+.loc ../contracts/NFTContract.sol, 52
 GETGLOB 22
-.loc ../contracts/Sample.sol, 0
+.loc ../contracts/NFTContract.sol, 0
 
 .globl	_mintNft_4d0b706c_internal
 .type	_mintNft_4d0b706c_internal, @function
@@ -1927,7 +1927,7 @@ LDU 256
 LDREF
 ENDS
 CTOS
-LDU 256
+LDMSGADDR
 LDU 256
 ENDS
 SETGLOB 22
@@ -1978,11 +1978,12 @@ PUSHCONT {
 	PUSH S12
 	PUSHINT 64
 	DICTUGET
-	ZEROSWAPIFNOT
 	PUSHCONT {
-		PLDU 256
+		PUSHREFSLICE {
+			.blob x8000000000000000000000000000000000000000000000000000000000000000001_
+		}
 	}
-	IF
+	IFNOT
 	PUSHINT 0
 	SETGLOB 22
 	SETGLOB 21
@@ -2052,7 +2053,7 @@ STU 128
 STU 256
 ROTREV
 NEWC
-STU 256
+STSLICE
 STU 256
 STBREFR
 STBREFR
@@ -2126,7 +2127,9 @@ CTOS
 SBITS
 NEQINT 1
 SETGLOB 6
-PUSHSLICE x8000000000000000000000000000000000000000000000000000000000000000001_
+PUSHREFSLICE {
+	.blob x8000000000000000000000000000000000000000000000000000000000000000001_
+}
 SETGLOB 9
 OVER
 CALLREF {

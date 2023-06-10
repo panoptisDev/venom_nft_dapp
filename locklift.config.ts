@@ -8,7 +8,7 @@ declare global {
 const LOCAL_NETWORK_ENDPOINT = process.env.NETWORK_ENDPOINT || "http://localhost/graphql";
 const DEV_NET_NETWORK_ENDPOINT = process.env.DEV_NET_NETWORK_ENDPOINT || "https://devnet-sandbox.evercloud.dev/graphql";
 
-const VENOM_TESTNET_ENDPOINT = process.env.VENOM_TESTNET_ENDPOINT || "https://jrpc-devnet.venom.foundation/";
+const VENOM_TESTNET_ENDPOINT = process.env.VENOM_TESTNET_ENDPOINT || "https://jrpc-devnet.venom.foundation/rpc";
 const VENOM_TESTNET_TRACE_ENDPOINT =
   process.env.VENOM_TESTNET_TRACE_ENDPOINT || "https://gql-devnet.venom.network/graphql";
 
@@ -25,7 +25,8 @@ const config: LockliftConfig = {
 
     // Specify config for extarnal contracts as in exapmple
     externalContracts: {
-      "./indexes": ['Index', 'IndexBasis']
+      "./indexes": ['Index', 'IndexBasis'],
+      "node_modules/tip3/build": ["TokenRoot", "TokenWallet"]
     }
   },
   linker: {
@@ -57,7 +58,7 @@ const config: LockliftConfig = {
         key: "172af540e43a524763dd53b26a066d472a97c4de37d5498170564510608250c3",
       },
       tracing: {
-        endpoint: LOCAL_NETWORK_ENDPOINT,
+        endpoint: VENOM_TESTNET_TRACE_ENDPOINT,
       },
       keys: {
         // Use everdev to generate your phrase
@@ -66,7 +67,7 @@ const config: LockliftConfig = {
         amount: 20,
       },
     },
-    test: {
+    test: { 
       connection: {
         id: 1,
         type: "graphql",
@@ -78,8 +79,8 @@ const config: LockliftConfig = {
         },
       },
       giver: {
-        address: "0:0000000000000000000000000000000000000000000000000000000000000000",
-        key: "secret key",
+        address: "0:e0503cdd6dfc9a3203b2745d2636022d94b2f11da10d3c5550c25a00bd85ee34",
+        key: "naive talent fork license vacuum rocket slot auction ability birth police wheat",
       },
       tracing: {
         endpoint: DEV_NET_NETWORK_ENDPOINT,
@@ -93,15 +94,16 @@ const config: LockliftConfig = {
     },
     venom_testnet: {
       connection: {
-        id: 1000,
+        id: 1002,
         type: "jrpc",
         group: "dev",
         data: {
           endpoint: VENOM_TESTNET_ENDPOINT,
+          // endpoint: VENOM_TESTNET_ENDPOINT,
         },
       },
       giver: {
-        address: "0:2f58089d5457330607efc2b966d4cc7282d0d726df18e13ae0aa5680cdf3e7bb",
+        address: "0:e0503cdd6dfc9a3203b2745d2636022d94b2f11da10d3c5550c25a00bd85ee34",
         phrase: "naive talent fork license vacuum rocket slot auction ability birth police wheat",
         accountId: 0,
       },
@@ -111,7 +113,7 @@ const config: LockliftConfig = {
       keys: {
         // Use everdev to generate your phrase
         // !!! Never commit it in your repos !!!
-        // phrase: "action inject penalty envelope rabbit element slim tornado dinner pizza off blood",
+        phrase: "naive talent fork license vacuum rocket slot auction ability birth police wheat",
         amount: 20,
       },
     },

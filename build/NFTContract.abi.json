@@ -143,7 +143,7 @@
 	],
 	"data": [
 		{"key":1,"name":"nounce","type":"uint256"},
-		{"key":2,"name":"owner","type":"uint256"}
+		{"key":2,"name":"owner","type":"address"}
 	],
 	"events": [
 		{
@@ -202,7 +202,7 @@
 		{"name":"_deployIndexBasisValue","type":"uint128"},
 		{"name":"_remainOnNft","type":"uint128"},
 		{"name":"nounce","type":"uint256"},
-		{"name":"owner","type":"uint256"},
+		{"name":"owner","type":"address"},
 		{"name":"state","type":"uint256"}
 	]
 }

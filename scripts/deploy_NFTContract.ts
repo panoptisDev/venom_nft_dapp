@@ -11,6 +11,7 @@ async function main() {
     publicKey: signer.publicKey,
     initParams: {
       nounce: getRandomNonce(),
+      // owner: new Address(`0:e0503cdd6dfc9a3203b2745d2636022d94b2f11da10d3c5550c25a00bd85ee34`)
       owner: `0x${signer.publicKey}`
     },
     constructorParams: {
@@ -18,7 +19,22 @@ async function main() {
         codeNft: nftArtifacts.code,
         codeIndex: indexArtifacts.code,
         codeIndexBasis: indexBasisArtifacts.code,
-        json: `{"collection":"tutorial"}` // EXAMPLE...not by TIP-4.2
+        json: `{
+          "type": "Basic NFT",
+          "name": "VenomArt Marketplace Collection",
+          "description": "Collect your favourite NFTs on venom blockchain, Trade NFTs for free on venomart.",
+          "preview": {
+            "source": "https://gateway.ipfscdn.io/ipfs/QmeqSSjdVjn3nq968wDDyC4yoHqqLQDPXnS19MShMTEFM6/twitterback.png",
+            "mimetype": "image/png"
+          },
+          "files": [
+            {
+              "source": "https://gateway.ipfscdn.io/ipfs/QmeqSSjdVjn3nq968wDDyC4yoHqqLQDPXnS19MShMTEFM6/twitterback.png",
+              "mimetype": "image/jpg"
+            }
+          ],
+          "external_url": "https://venomart.space/"
+        }` // EXAMPLE...not by TIP-4.2
     },
     value: locklift.utils.toNano(1),
   });

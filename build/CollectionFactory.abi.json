@@ -1,0 +1,82 @@
+{
+	"ABI version": 2,
+	"version": "2.2",
+	"header": ["pubkey", "time", "expire"],
+	"functions": [
+		{
+			"name": "constructor",
+			"inputs": [
+				{"name":"_nft_code","type":"cell"},
+				{"name":"_codeIndex","type":"cell"},
+				{"name":"_codeIndexBasis","type":"cell"},
+				{"name":"_nft_collection_code","type":"cell"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "create_collection",
+			"inputs": [
+				{"name":"_state","type":"uint256"},
+				{"name":"_json","type":"string"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "getAllCollections",
+			"inputs": [
+			],
+			"outputs": [
+				{"components":[{"name":"collectionId","type":"uint256"},{"name":"json","type":"string"},{"name":"owner","type":"address"},{"name":"collection_address","type":"address"}],"name":"value0","type":"tuple[]"}
+			]
+		},
+		{
+			"name": "getCollectionById",
+			"inputs": [
+				{"name":"collection_id","type":"uint256"}
+			],
+			"outputs": [
+				{"components":[{"name":"collectionId","type":"uint256"},{"name":"json","type":"string"},{"name":"owner","type":"address"},{"name":"collection_address","type":"address"}],"name":"value0","type":"tuple"}
+			]
+		},
+		{
+			"name": "getMyCollections",
+			"inputs": [
+			],
+			"outputs": [
+				{"components":[{"name":"collectionId","type":"uint256"},{"name":"json","type":"string"},{"name":"owner","type":"address"},{"name":"collection_address","type":"address"}],"name":"value0","type":"tuple[]"}
+			]
+		}
+	],
+	"data": [
+	],
+	"events": [
+		{
+			"name": "CollectionCreated",
+			"inputs": [
+				{"name":"collectionId","type":"uint256"},
+				{"name":"json","type":"string"},
+				{"name":"owner","type":"address"},
+				{"name":"collection_address","type":"address"}
+			],
+			"outputs": [
+			]
+		}
+	],
+	"fields": [
+		{"name":"_pubkey","type":"uint256"},
+		{"name":"_timestamp","type":"uint64"},
+		{"name":"_constructorFlag","type":"bool"},
+		{"name":"collectionId","type":"uint256"},
+		{"name":"nftMarketplace","type":"address"},
+		{"name":"nft_code","type":"cell"},
+		{"name":"codeIndex","type":"cell"},
+		{"name":"codeIndexBasis","type":"cell"},
+		{"name":"nft_collection_code","type":"cell"},
+		{"name":"owner","type":"address"},
+		{"components":[{"name":"collectionId","type":"uint256"},{"name":"json","type":"string"},{"name":"owner","type":"address"},{"name":"collection_address","type":"address"}],"name":"userToCollections","type":"map(address,tuple[])"},
+		{"components":[{"name":"collectionId","type":"uint256"},{"name":"json","type":"string"},{"name":"owner","type":"address"},{"name":"collection_address","type":"address"}],"name":"idToCollection","type":"map(uint256,tuple)"},
+		{"name":"_remainOnNft","type":"uint128"}
+	]
+}
